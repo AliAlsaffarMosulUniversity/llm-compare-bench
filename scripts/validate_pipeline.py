@@ -60,7 +60,7 @@ def experiment_a(out: Path, reps: int, n=300, acc_a=0.85, acc_b=0.75, rho=0.5):
 
 
 def experiment_b(out: Path, reps: int):
-    ns = [50, 100, 150, 200, 300, 500, 1000]
+    ns = [50, 100, 150, 200, 300, 500, 600, 800, 1000]
     deltas = [0.0, 0.03, 0.05, 0.10]
     rows = []
     for acc in (0.80, 0.90):
