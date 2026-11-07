@@ -29,7 +29,9 @@ cp config.example.json config.json         # put exact model IDs; config.json is
 export OPENAI_API_KEY=...  GEMINI_API_KEY=...
 
 llmbench gen-needles --output data/tasks_needles.jsonl     # optional long-context tasks
-cat data/tasks_sample.jsonl data/tasks_needles.jsonl > data/my_tasks.jsonl   # + your own items
+# or use the ready-made extended set (637 items: 607 auto-scored + 30 human-rated writing):
+#   data/tasks_full.jsonl   (built by scripts/build_full_tasks.py; answers are computed, not typed)
+cp data/tasks_full.jsonl data/my_tasks.jsonl
 
 llmbench run    --config config.json --tasks data/my_tasks.jsonl --out results/run1
 llmbench report --tasks data/my_tasks.jsonl --out results/run1 --a chatgpt --b gemini
@@ -82,9 +84,9 @@ the time** (≈ 600 are needed for 80 % power at 80 % accuracy, ρ = 0.5). See `
 
 ```
 src/llmbench/   stats.py scoring.py providers.py runner.py report.py rubric.py power.py tasks.py cli.py
-data/           tasks_sample.jsonl (28 smoke-test items; built by scripts/build_sample_tasks.py)
+data/           tasks_sample.jsonl (28 smoke-test items), tasks_full.jsonl (637 items; scripts/build_full_tasks.py)
 scripts/        validate_pipeline.py  make_figures.py  build_sample_tasks.py
-tests/          32 unit/integration tests
+tests/          37 unit/integration tests
 results/example_validation/   synthetic-responder validation output (CSV/JSON)
 docs/           figures used in the paper
 ```

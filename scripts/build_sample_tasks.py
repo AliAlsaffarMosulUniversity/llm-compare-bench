@@ -14,6 +14,12 @@ T = []
 
 
 def mcq(id_, dim, q, opts, ans):
+    # shuffle options with a seeded RNG so answer keys are balanced across A-D
+    import random
+    correct = opts["ABCD".index(ans)]
+    opts = list(opts)
+    random.Random(id_).shuffle(opts)
+    ans = "ABCD"[opts.index(correct)]
     body = q + "\n" + "\n".join(f"{l}) {o}" for l, o in zip("ABCD", opts))
     T.append(Task(id_, dim, body, "mcq", ans))
 

@@ -35,6 +35,10 @@ def test_exact_arabic_normalisation():
     assert scoring.score(t, "العاصمة هي بَغْدَاد")[0] == 1
     assert scoring.score(T("exact", ["Au"]), "The symbol is Au.")[0] == 1
     assert scoring.score(T("exact", ["1969"]), "It was 1968")[0] == 0
+    # ASCII references match whole words only
+    assert scoring.score(T("exact", ["Au"]), "I am not sure, because it varies")[0] == 0
+    assert scoring.score(T("exact", ["Au"]), "Gold is Au.")[0] == 1
+    assert scoring.score(T("exact", ["Fe"]), "The symbol is Fe")[0] == 1
 
 
 def test_abstain_heuristic():

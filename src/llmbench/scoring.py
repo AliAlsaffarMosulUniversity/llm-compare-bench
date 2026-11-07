@@ -60,10 +60,20 @@ def score_numeric(task: Task, response: str):
     return int(abs(got - float(task.reference)) <= tol), f"parsed={got}"
 
 
+def _contains(body: str, ref: str) -> bool:
+    """Substring match, but ASCII references must match whole words ('Au' must not hit 'because').
+
+    Arabic references use plain substring matching because Arabic prefixes attach to words.
+    """
+    if ref.isascii():
+        return re.search(r"(?<!\w)" + re.escape(ref) + r"(?!\w)", body) is not None
+    return ref in body
+
+
 def score_exact(task: Task, response: str):
     refs = task.reference if isinstance(task.reference, list) else [task.reference]
     body = normalize_text(response)
-    hit = any(normalize_text(str(r)) in body for r in refs)
+    hit = any(_contains(body, normalize_text(str(r))) for r in refs)
     return int(hit), "contains reference" if hit else "reference not found"
 
 
