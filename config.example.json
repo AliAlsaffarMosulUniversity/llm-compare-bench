@@ -1,0 +1,24 @@
+{
+  "_comment": "Copy to config.json, fill in the exact model IDs you are evaluating, and export OPENAI_API_KEY / GEMINI_API_KEY. Never commit keys.",
+  "system_prompt": "You are a careful assistant. Follow the requested answer format exactly.",
+  "retries": 4,
+  "workers": 2,
+  "providers": [
+    {
+      "label": "chatgpt",
+      "type": "openai",
+      "model": "REPLACE_WITH_EXACT_MODEL_ID",
+      "api_key_env": "OPENAI_API_KEY",
+      "params": { "temperature": 0, "max_completion_tokens": 2048 },
+      "price_per_mtok": { "input": null, "output": null }
+    },
+    {
+      "label": "gemini",
+      "type": "gemini",
+      "model": "REPLACE_WITH_EXACT_MODEL_ID",
+      "api_key_env": "GEMINI_API_KEY",
+      "params": { "temperature": 0, "maxOutputTokens": 2048 },
+      "price_per_mtok": { "input": null, "output": null }
+    }
+  ]
+}

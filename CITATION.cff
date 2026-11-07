@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "llmbench: reproducible paired evaluation of two LLM chat systems"
+version: 0.1.0
+authors:
+  - family-names: Alsaffar
+    given-names: Ali A.
+    affiliation: "University of Mosul, Iraq"
+    orcid: "https://orcid.org/0009-0005-0918-893X"
+repository-code: "https://github.com/AliAlsaffarMosulUniversity/llm-compare-bench"
+license: MIT

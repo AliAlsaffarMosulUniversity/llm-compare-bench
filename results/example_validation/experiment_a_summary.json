@@ -1,0 +1,8 @@
+{
+  "n_tasks": 300,
+  "replicates": 200,
+  "true_gap": 0.09999999999999998,
+  "mean_estimated_gap": 0.09605000000000001,
+  "ci_coverage": 0.96,
+  "power_at_alpha_0.05": 0.845
+}

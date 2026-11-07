@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llmbench"
+version = "0.1.0"
+description = "Reproducible paired evaluation harness for comparing two LLM chat systems (e.g., ChatGPT vs Gemini)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Ali A. Alsaffar" }]
+dependencies = []          # runtime is standard-library only
+
+[project.optional-dependencies]
+dev = ["pytest", "scipy", "numpy", "matplotlib"]
+
+[project.scripts]
+llmbench = "llmbench.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

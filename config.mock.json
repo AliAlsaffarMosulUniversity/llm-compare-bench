@@ -1,0 +1,12 @@
+{
+  "_comment": "Synthetic responders for validating the pipeline end to end. Results are NOT evidence about any real model.",
+  "system_prompt": "",
+  "retries": 1,
+  "workers": 1,
+  "providers": [
+    { "label": "model_a", "type": "mock", "model": "mock-a", "seed": 1,
+      "accuracy": { "default": 0.85 } },
+    { "label": "model_b", "type": "mock", "model": "mock-b", "seed": 2,
+      "accuracy": { "default": 0.70 } }
+  ]
+}
